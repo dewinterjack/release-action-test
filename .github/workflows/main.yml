@@ -1,0 +1,22 @@
+name: Release Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out the repository
+      - uses: actions/checkout@v2
+
+      # Creates a GitHub Release from an existing tag
+      - name: Create release
+        uses: actions/create-release@v1.1.4
+        with:
+          tag_name: hello
+          release_name: Existing Tag Release
+          body_path: readme.md
